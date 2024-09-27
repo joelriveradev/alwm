@@ -29,7 +29,7 @@ export default async function Song({ params }: Props) {
   const { id, title, scripture, description } = song
 
   return (
-    <article className='py-16 lg:py-36'>
+    <article className='py-16 pb-44 lg:py-36 lg:pb-16'>
       <Container>
         <header className='flex flex-col'>
           <div className='flex items-center gap-6'>
