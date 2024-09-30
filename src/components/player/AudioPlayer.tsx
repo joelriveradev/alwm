@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
+import { useEffect, useRef, useState } from 'react'
 import { useAudioPlayer } from '@/components/AudioProvider'
 import { ForwardButton } from '@/components/player/ForwardButton'
 import { MuteButton } from '@/components/player/MuteButton'
@@ -10,6 +10,7 @@ import { PlaybackRateButton } from '@/components/player/PlaybackRateButton'
 import { PlayButton } from '@/components/player/PlayButton'
 import { RewindButton } from '@/components/player/RewindButton'
 import { Slider } from '@/components/player/Slider'
+import { X } from 'lucide-react'
 
 function parseTime(seconds: number) {
   let hours = Math.floor(seconds / 3600)
@@ -42,11 +43,26 @@ export function AudioPlayer() {
     return null
   }
 
+  function handleClose() {
+    player.pause()
+    player.seek(0)
+    player.reset()
+  }
+
   return (
-    <div className='flex items-center gap-6 bg-white/90 px-4 py-4 shadow shadow-slate-200/80 ring-1 ring-slate-900/5 backdrop-blur-sm md:px-6'>
+    <div className='relative flex items-center gap-6 bg-white/90 px-4 py-4 shadow shadow-slate-200/80 ring-1 ring-slate-900/5 backdrop-blur-sm md:px-6'>
+      <button
+        className='absolute right-3 top-1 rounded-full p-1 hover:bg-neutral-100'
+        onClick={handleClose}
+        aria-label='Close audio player'
+      >
+        <X size={20} className='text-neutral-400' />
+      </button>
+
       <div className='hidden md:block'>
         <PlayButton player={player} />
       </div>
+
       <div className='mb-[env(safe-area-inset-bottom)] flex flex-1 flex-col gap-3 overflow-hidden p-1'>
         <Link
           href={`/${player.song.id}`}
@@ -55,6 +71,7 @@ export function AudioPlayer() {
         >
           {player.song.title}
         </Link>
+
         <div className='flex justify-between gap-6'>
           <div className='flex items-center md:hidden'>
             <MuteButton player={player} />
@@ -66,6 +83,7 @@ export function AudioPlayer() {
             </div>
             <ForwardButton player={player} />
           </div>
+
           <Slider
             label='Current time'
             maxValue={player.duration}
@@ -88,6 +106,7 @@ export function AudioPlayer() {
             <div className='flex items-center'>
               <PlaybackRateButton player={player} />
             </div>
+
             <div className='hidden items-center md:flex'>
               <MuteButton player={player} />
             </div>

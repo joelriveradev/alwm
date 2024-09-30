@@ -20,6 +20,7 @@ interface PublicPlayerActions {
   playbackRate: (rate: number) => void
   toggleMute: () => void
   isPlaying: (song?: Song) => boolean
+  reset: () => void
 }
 
 export type PlayerAPI = PlayerState & PublicPlayerActions
@@ -31,6 +32,7 @@ const enum ActionKind {
   TOGGLE_MUTE = 'TOGGLE_MUTE',
   SET_CURRENT_TIME = 'SET_CURRENT_TIME',
   SET_DURATION = 'SET_DURATION',
+  RESET = 'RESET',
 }
 
 type Action =
@@ -40,7 +42,7 @@ type Action =
   | { type: ActionKind.TOGGLE_MUTE }
   | { type: ActionKind.SET_CURRENT_TIME; payload: number }
   | { type: ActionKind.SET_DURATION; payload: number }
-
+  | { type: ActionKind.RESET }
 const AudioPlayerContext = createContext<PlayerAPI | null>(null)
 
 function audioReducer(state: PlayerState, action: Action): PlayerState {
@@ -57,6 +59,14 @@ function audioReducer(state: PlayerState, action: Action): PlayerState {
       return { ...state, currentTime: action.payload }
     case ActionKind.SET_DURATION:
       return { ...state, duration: action.payload }
+    case ActionKind.RESET:
+      return {
+        playing: false,
+        muted: false,
+        duration: 0,
+        currentTime: 0,
+        song: null,
+      }
   }
 }
 
@@ -73,6 +83,9 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
   let actions = useMemo<PublicPlayerActions>(() => {
     return {
+      reset() {
+        dispatch({ type: ActionKind.RESET })
+      },
       play(song) {
         if (song) {
           dispatch({ type: ActionKind.SET_META, payload: song })
