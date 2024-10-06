@@ -12,7 +12,7 @@ export function AutoplayButton({ player }: Props) {
   return (
     <button
       type='button'
-      className='relative flex h-4 w-4 items-center justify-center rounded-md p-3 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 md:order-none'
+      className='relative flex h-4 w-4 items-center justify-center rounded-full p-3 hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2 md:order-none'
       onClick={() => autoplay()}
       aria-label='Auto play'
     >
@@ -20,8 +20,8 @@ export function AutoplayButton({ player }: Props) {
 
       <Repeat
         size={17}
-        className={cn('right-0 shrink-0 text-slate-400', {
-          'text-slate-600': autoplaying,
+        className={cn('right-0 shrink-0 text-neutral-400', {
+          'text-neutral-600': autoplaying,
         })}
       />
     </button>

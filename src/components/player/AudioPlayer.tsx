@@ -49,7 +49,7 @@ export function AudioPlayer() {
   }
 
   return (
-    <div className='relative flex items-center gap-6 bg-white/90 px-4 py-4 shadow shadow-slate-200/80 ring-1 ring-slate-900/5 backdrop-blur-sm md:px-6 md:pr-3'>
+    <div className='relative flex items-center gap-6 bg-white/90 px-4 py-4 pr-2.5 shadow shadow-slate-200/80 ring-1 ring-slate-900/5 backdrop-blur-sm md:px-6 md:pr-2.5'>
       <button
         className='absolute right-3 top-2 rounded-full p-1 hover:bg-neutral-100'
         onClick={handleClose}
@@ -72,9 +72,7 @@ export function AudioPlayer() {
         </Link>
 
         <div className='flex justify-between gap-6'>
-          <div className='flex items-center md:hidden'>
-            <AutoplayButton player={player} />
-          </div>
+          <div className='flex items-center md:hidden'></div>
 
           <div className='flex flex-none items-center gap-4'>
             <RewindButton player={player} />
