@@ -90,11 +90,9 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
           dispatch({ type: ActionKind.SET_META, payload: song })
 
           if (playerRef.current && playerRef.current.currentSrc !== song.url) {
-            let playbackRate = playerRef.current.playbackRate
             playerRef.current.src = song.url
             playerRef.current.load()
             playerRef.current.pause()
-            playerRef.current.playbackRate = playbackRate
             playerRef.current.currentTime = 0
           }
         }
