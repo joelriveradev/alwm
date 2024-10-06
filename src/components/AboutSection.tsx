@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import clsx from 'clsx'
 
+import { cn } from '@/lib/utils'
 import { TinyWaveFormIcon } from '@/components/TinyWaveFormIcon'
 
 export function AboutSection(props: React.ComponentPropsWithoutRef<'section'>) {
@@ -19,10 +19,9 @@ export function AboutSection(props: React.ComponentPropsWithoutRef<'section'>) {
       </h2>
 
       <p
-        className={clsx(
-          'mt-2 text-base leading-7 text-gray-700',
-          !isExpanded && 'lg:line-clamp-3',
-        )}
+        className={cn('mt-2 text-base leading-7 text-gray-700', {
+          'lg:line-clamp-3': !isExpanded,
+        })}
       >
         In this show, Eric and Wes dig deep to get to the facts with guests who
         have been labeled villains by a society quick to judge, without actually
