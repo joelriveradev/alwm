@@ -76,11 +76,14 @@ export function AudioPlayer() {
           <div className='flex items-center md:hidden'>
             <MuteButton player={player} />
           </div>
+
           <div className='flex flex-none items-center gap-4'>
             <RewindButton player={player} />
+
             <div className='md:hidden'>
               <PlayButton player={player} />
             </div>
+
             <ForwardButton player={player} />
           </div>
 
