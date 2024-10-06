@@ -10,7 +10,7 @@ export interface Song {
 export async function getScriptureSongs(): Promise<Array<Song>> {
   return [
     {
-      id: '1',
+      id: '0',
       title: 'For God Who Commanded',
       scripture: '2 Corinthians 4:6',
       description:
@@ -19,7 +19,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/1.mp4',
     },
     {
-      id: '2',
+      id: '1',
       title: 'Unto The King Immortal',
       scripture: '1 Timothy 1:17',
       description:
@@ -28,7 +28,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/2.mp4',
     },
     {
-      id: '3',
+      id: '2',
       title: 'Create In Me A Clean Heart',
       scripture: 'Psalm 51:10',
       description:
@@ -37,7 +37,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/3.mp4',
     },
     {
-      id: '4',
+      id: '3',
       title: 'And This Is Life Eternal',
       scripture: 'John 17:3',
       description:
@@ -46,7 +46,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/4.mp4',
     },
     {
-      id: '5',
+      id: '4',
       title: 'Ho, Every One That Thirsteth',
       scripture: 'Isaiah 55:1-2',
       description:
@@ -55,7 +55,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/5.mp4',
     },
     {
-      id: '6',
+      id: '5',
       title: 'The Steps Of A Good Man',
       scripture: 'Psalm 37:23-24',
       description:
@@ -64,7 +64,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/6.mp4',
     },
     {
-      id: '7',
+      id: '6',
       title: 'He Shall Feed His Flock',
       scripture: 'Isaiah 40:11',
       description:
@@ -73,7 +73,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/7.mp4',
     },
     {
-      id: '8',
+      id: '7',
       title: 'Trust In The Lord With All Thine Heart',
       scripture: 'Proverbs 3:6,11',
       description:
@@ -82,7 +82,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/8.mp4',
     },
     {
-      id: '9',
+      id: '8',
       title: 'Search Me, O God',
       scripture: 'Psalm 139:23-24',
       description:
@@ -91,7 +91,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/9.mp4',
     },
     {
-      id: '10',
+      id: '9',
       title: 'Not By Might, Nor By Power',
       scripture: 'Zechariah 4:6',
       description:
@@ -100,7 +100,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/10.mp4',
     },
     {
-      id: '11',
+      id: '10',
       title: 'I Am Crucified With Christ',
       scripture: 'Galatians 2:20',
       description:
@@ -109,7 +109,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/11.mp4',
     },
     {
-      id: '12',
+      id: '11',
       title: 'So Shall My Word Be That Goeth Forth',
       scripture: 'Isaiah 55:11',
       description:
@@ -118,7 +118,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/12.mp4',
     },
     {
-      id: '13',
+      id: '12',
       title: 'Be Strong And Of A Good Courage',
       scripture: 'Joshua 1:9',
       description:
@@ -127,7 +127,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/13.mp4',
     },
     {
-      id: '14',
+      id: '13',
       title: 'Present Your Bodies A Living Sacrifice',
       scripture: 'Romans 12:1',
       description:
@@ -136,7 +136,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/14.mp4',
     },
     {
-      id: '15',
+      id: '14',
       title: 'If Ye Then Be Risen With Christ',
       scripture: 'Colossians 3:1',
       description:
@@ -145,7 +145,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/15.mp4',
     },
     {
-      id: '16',
+      id: '15',
       title: 'Blessed Is Everyone That Feareth The Lord',
       scripture: 'Psalm 128:1-4',
       description:
@@ -154,7 +154,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/16.mp4',
     },
     {
-      id: '17',
+      id: '16',
       title: 'The Steadfast Love',
       scripture: 'Lamentations 3:23',
       description:
@@ -163,7 +163,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/17.mp4',
     },
     {
-      id: '18',
+      id: '17',
       title: 'Therefore The Redeemed Of The Lord',
       scripture: 'Isaiah 51:11',
       description:
@@ -172,7 +172,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/18.mp4',
     },
     {
-      id: '19',
+      id: '18',
       title: 'Give Ear To My Words O Lord',
       scripture: 'Psalm 5:1',
       description:
@@ -181,7 +181,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/19.mp4',
     },
     {
-      id: '20',
+      id: '19',
       title: 'Great Is The Lord And Greatly To Be Praised',
       scripture: 'Psalm 48:1-2',
       description:
@@ -190,7 +190,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/20.mp4',
     },
     {
-      id: '21',
+      id: '20',
       title: 'I Will Sing Of The Mercies Of The Lord',
       scripture: 'Psalm 89:1',
       description:
@@ -199,7 +199,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/21.mp4',
     },
     {
-      id: '22',
+      id: '21',
       title: 'Seek Ye First The Kingdom Of God',
       scripture: 'Matthew 6:33',
       description:
@@ -208,7 +208,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/22.mp4',
     },
     {
-      id: '23',
+      id: '22',
       title: 'A Merry Heart Doeth Good Like A Medicine',
       scripture: 'Proverbs 17:22',
       description:
@@ -217,7 +217,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/23.mp4',
     },
     {
-      id: '24',
+      id: '23',
       title: 'Hear My Cry O God',
       scripture: 'Psalm 61:1',
       description:
@@ -226,7 +226,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/24.mp4',
     },
     {
-      id: '25',
+      id: '24',
       title: 'The Law Of The Lord Is Perfect',
       scripture: 'Psalm 19:7',
       description:
@@ -235,7 +235,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/25.mp4',
     },
     {
-      id: '26',
+      id: '25',
       title: 'But They That Wait Upon The Lord',
       scripture: 'Isaiah 40:31',
       description:
@@ -244,7 +244,7 @@ export async function getScriptureSongs(): Promise<Array<Song>> {
       url: '/songs/26.mp4',
     },
     {
-      id: '27',
+      id: '26',
       title: 'A New Heart Also Will I Give You',
       scripture: 'Ezekiel 36:26-28',
       description:
