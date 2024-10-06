@@ -19,7 +19,7 @@ export function SongPlayButton({
     <button
       type='button'
       onClick={() => player.toggle()}
-      aria-label={`${player.playing ? 'Pause' : 'Play'} episode ${song.title}`}
+      aria-label={`${player.playing ? 'Pause' : 'Play'} ${song.title}`}
       {...props}
     >
       {player.playing ? playing : paused}
