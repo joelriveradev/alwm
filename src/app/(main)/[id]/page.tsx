@@ -19,8 +19,11 @@ const getSong = cache(async (id: string) => {
 })
 
 export async function generateMetadata({ params }: Props) {
+  const { title, description } = await getSong(params.id)
+
   return {
-    title: await getSong(params.id).then(({ title }) => title),
+    title,
+    description,
   }
 }
 
