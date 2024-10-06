@@ -8,7 +8,7 @@ export async function Lyrics({ id }: Props) {
   )
 
   return (
-    <div className='pl-20'>
+    <div className='pl-20' id='lyrics'>
       <p className='mb-7 font-medium'>Lyrics</p>
 
       {lyrics.stanzas.map((stanza, i) => (

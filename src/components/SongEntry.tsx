@@ -24,19 +24,19 @@ function PlayIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 export function SongEntry({ song }: { song: Song }) {
-  const { id, title, description, published } = song
+  const { id, title, description, scripture } = song
 
   return (
     <article aria-labelledby={`song-${id}-title`} className='py-10 sm:py-12'>
       <Container>
         <div className='flex flex-col items-start'>
-          <p className='text-xs'>{song.scripture}</p>
+          <p className='text-xs'>{scripture}</p>
 
           <h2
             id={`song-${id}-title`}
-            className='text-hunter mt-2 text-lg font-bold'
+            className='mt-2 text-lg font-bold text-hunter'
           >
-            <Link href={`/${id}`} prefetch>
+            <Link href={`/${id}#lyrics`} prefetch>
               {id}. {title}
             </Link>
           </h2>
@@ -70,7 +70,7 @@ export function SongEntry({ song }: { song: Song }) {
             </span>
 
             <Link
-              href={`/${id}`}
+              href={`/${id}#lyrics`}
               className='flex items-center text-sm font-bold leading-6 text-teal-600 hover:text-teal-800 active:text-teal-900'
               aria-label={`Show lyrics for ${title}`}
               prefetch
