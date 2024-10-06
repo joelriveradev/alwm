@@ -25,6 +25,7 @@ function PlayIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 }
 export function SongEntry({ song }: { song: Song }) {
   const { id, title, description, scripture } = song
+  const label = `${Number(id) + 1}. ${title}`
 
   return (
     <article aria-labelledby={`song-${id}-title`} className='py-10 sm:py-12'>
@@ -37,7 +38,7 @@ export function SongEntry({ song }: { song: Song }) {
             className='mt-2 text-lg font-bold text-hunter'
           >
             <Link href={`/${id}#lyrics`} prefetch>
-              {id}. {title}
+              {label}
             </Link>
           </h2>
 

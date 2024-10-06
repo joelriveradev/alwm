@@ -5,10 +5,9 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { useAudioPlayer } from '@/components/AudioProvider'
 import { ForwardButton } from '@/components/player/ForwardButton'
-import { MuteButton } from '@/components/player/MuteButton'
-import { PlaybackRateButton } from '@/components/player/PlaybackRateButton'
 import { PlayButton } from '@/components/player/PlayButton'
 import { RewindButton } from '@/components/player/RewindButton'
+import { AutoplayButton } from '@/components/player/AutoplayButton'
 import { Slider } from '@/components/player/Slider'
 import { X } from 'lucide-react'
 
@@ -50,9 +49,9 @@ export function AudioPlayer() {
   }
 
   return (
-    <div className='relative flex items-center gap-6 bg-white/90 px-4 py-4 shadow shadow-slate-200/80 ring-1 ring-slate-900/5 backdrop-blur-sm md:px-6'>
+    <div className='relative flex items-center gap-6 bg-white/90 px-4 py-4 shadow shadow-slate-200/80 ring-1 ring-slate-900/5 backdrop-blur-sm md:px-6 md:pr-3'>
       <button
-        className='absolute right-3 top-1 rounded-full p-1 hover:bg-neutral-100'
+        className='absolute right-3 top-2 rounded-full p-1 hover:bg-neutral-100'
         onClick={handleClose}
         aria-label='Close audio player'
       >
@@ -74,7 +73,7 @@ export function AudioPlayer() {
 
         <div className='flex justify-between gap-6'>
           <div className='flex items-center md:hidden'>
-            <MuteButton player={player} />
+            <AutoplayButton player={player} />
           </div>
 
           <div className='flex flex-none items-center gap-4'>
@@ -105,15 +104,8 @@ export function AudioPlayer() {
               player.pause()
             }}
           />
-          <div className='flex items-center gap-4'>
-            <div className='flex items-center'>
-              <PlaybackRateButton player={player} />
-            </div>
 
-            <div className='hidden items-center md:flex'>
-              <MuteButton player={player} />
-            </div>
-          </div>
+          <AutoplayButton player={player} />
         </div>
       </div>
     </div>

@@ -1,24 +1,23 @@
 'use client'
 
 import { createContext, useContext, useMemo, useReducer, useRef } from 'react'
-import { Song } from '@/lib/songs'
+import { Song, getScriptureSongs } from '@/lib/songs'
 
 interface PlayerState {
+  autoplaying: boolean
   playing: boolean
-  muted: boolean
   duration: number
   currentTime: number
   song: Song | null
 }
 
 interface PublicPlayerActions {
+  autoplay: () => void
   play: (song?: Song) => void
   pause: () => void
   toggle: (song?: Song) => void
   seekBy: (amount: number) => void
   seek: (time: number) => void
-  playbackRate: (rate: number) => void
-  toggleMute: () => void
   isPlaying: (song?: Song) => boolean
   reset: () => void
 }
@@ -29,17 +28,17 @@ const enum ActionKind {
   SET_META = 'SET_META',
   PLAY = 'PLAY',
   PAUSE = 'PAUSE',
-  TOGGLE_MUTE = 'TOGGLE_MUTE',
   SET_CURRENT_TIME = 'SET_CURRENT_TIME',
   SET_DURATION = 'SET_DURATION',
   RESET = 'RESET',
+  AUTOPLAY = 'AUTOPLAY',
 }
 
 type Action =
+  | { type: ActionKind.AUTOPLAY }
   | { type: ActionKind.SET_META; payload: Song }
   | { type: ActionKind.PLAY }
   | { type: ActionKind.PAUSE }
-  | { type: ActionKind.TOGGLE_MUTE }
   | { type: ActionKind.SET_CURRENT_TIME; payload: number }
   | { type: ActionKind.SET_DURATION; payload: number }
   | { type: ActionKind.RESET }
@@ -53,27 +52,27 @@ function audioReducer(state: PlayerState, action: Action): PlayerState {
       return { ...state, playing: true }
     case ActionKind.PAUSE:
       return { ...state, playing: false }
-    case ActionKind.TOGGLE_MUTE:
-      return { ...state, muted: !state.muted }
     case ActionKind.SET_CURRENT_TIME:
       return { ...state, currentTime: action.payload }
     case ActionKind.SET_DURATION:
       return { ...state, duration: action.payload }
     case ActionKind.RESET:
       return {
+        ...state,
         playing: false,
-        muted: false,
         duration: 0,
         currentTime: 0,
         song: null,
       }
+    case ActionKind.AUTOPLAY:
+      return { ...state, autoplaying: !state.autoplaying }
   }
 }
 
 export function AudioProvider({ children }: { children: React.ReactNode }) {
   let [state, dispatch] = useReducer(audioReducer, {
+    autoplaying: false,
     playing: false,
-    muted: false,
     duration: 0,
     currentTime: 0,
     song: null,
@@ -118,13 +117,8 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
           playerRef.current.currentTime = time
         }
       },
-      playbackRate(rate) {
-        if (playerRef.current) {
-          playerRef.current.playbackRate = rate
-        }
-      },
-      toggleMute() {
-        dispatch({ type: ActionKind.TOGGLE_MUTE })
+      autoplay() {
+        dispatch({ type: ActionKind.AUTOPLAY })
       },
       isPlaying(song) {
         return song
@@ -149,6 +143,23 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         ref={playerRef}
         onPlay={() => dispatch({ type: ActionKind.PLAY })}
         onPause={() => dispatch({ type: ActionKind.PAUSE })}
+        onEnded={async () => {
+          const { song, autoplaying } = state
+
+          if (song && autoplaying) {
+            const songs = await getScriptureSongs()
+            const currentSongID = Number(song.id)
+
+            if (currentSongID < songs.length - 1) {
+              const nextSong = songs[currentSongID + 1]
+              actions.play(nextSong)
+            } else {
+              actions.play(songs[0])
+            }
+
+            actions.play()
+          }
+        }}
         onTimeUpdate={(event) => {
           dispatch({
             type: ActionKind.SET_CURRENT_TIME,
@@ -161,7 +172,6 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
             payload: Math.floor(event.currentTarget.duration),
           })
         }}
-        muted={state.muted}
       />
     </>
   )
