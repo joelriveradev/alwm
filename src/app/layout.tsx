@@ -28,6 +28,11 @@ export default function RootLayout({
           rel='stylesheet'
           href='https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap'
         />
+
+        <link rel='apple-touch-icon' href='/poster.png' />
+        <link rel='apple-touch-startup-image' href='/poster.png' />
+        <meta name='apple-mobile-web-app-title' content='Add Life With Music' />
+        <meta name='apple-mobile-web-app-capable' content='yes' />
       </head>
 
       <body className='flex min-h-dvh'>
